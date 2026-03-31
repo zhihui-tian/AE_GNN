@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+
+python NPS/train_stochastic.py --model stochastic_phase_field --dim=2 \
+  --model_setting '{"G0":0,"G1":0,"G2":0}' \
+  --frame_shape=8 --n_feats 200 \
+  --f1 1 --s1 'def G0_func(a): return a*0.0' \
+  --epochs 200000 --minibatch_size=16

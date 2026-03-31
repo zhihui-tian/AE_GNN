@@ -1,0 +1,7 @@
+experiment/GNN_only_reviewer/grain_NPS-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp10_nhid32_nae1_nencdec1 0
+NPS original
+experiment/GNN_only_reviewer/grain_NPS-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp10_nhid32_nae1_nencdec1/log_gnn_32
+experiment/GNN_only_reviewer/grain_NPS-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp14_nhid32_nae1_nencdec1 1
+NPS original
+experiment/GNN_only_reviewer/grain_NPS-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp14_nhid32_nae1_nencdec1/log_gnn_32
+Mar 30 17:00:49.100352 PDT 2026 broker.err[0]: rc2.0: /var/tmp/tian9/jobtmp-0-f2yiLthW2tMM/script Terminated (rc=143) 170.1s

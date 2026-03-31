@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+
+
+# #jsrun -r 1 
+# python main.py --dim 3 \
+
+# python NPS/train_stochastic.py \
+jsrun -r 1 python -u main.py \
+  --model base_evolution --dim=2 --periodic --jobid CHE2d.res \
+  --model_deter feedforward --model_stoch simple_diffusion \
+  --frame_shape=128 --num_hidden 64,64,64 --n_GPUs=4 \
+  --loss "1*MSE + 0.00001*noise_MSE" \
+  --dir_data $HOME/data/che2dp --channel_first \
+  --print_every=20  --save_results \
+  --epochs 8000 --minibatch_size=200 --input_length=1 --total_length 2 --lr=2e-3 --lr_decay=18 --gamma=0.8 --pred_length_test=11
+
+# --epochs 8000 --minibatch_size=400 --input_length=1 --total_length 20 --test_only

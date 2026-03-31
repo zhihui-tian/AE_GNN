@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+
+jsrun -r 1 python -u main.py \
+  --dir_data=$HOME/data/AlCe_defectfree --datatype=single_image --dim=2 --channel_first --frame_shape=480 --n_colors=1 --n_colors_out=1 --data_slice="...,1:" --data_setting="'splitoffset'=100" \
+  --jobid=AlCe.AEaligned_f24 --pointgroup=4m \
+  --model_deter=feedforward --ff_model=autoencoder_anomaly_detection --no_putback_conv --num_hidden=24 --n_GPUs=4  \
+  --loss="1*MSE" --print_every=20 --epochs=8000 --lr=1e-3 --lr_decay=20 --gamma=0.9 \
+  --minibatch_size=14 --input_length=1 --total_length=2 --resume=-1 --load=y
+
+  #--minibatch_size=25   --input_length=3 --total_length=100 --pred_length_test=97 --tskip_test=1 --clip_step 9999 --test_only --resume -2 --save_results
+#for i in ../experiment/LJ20.[pc]*/log*; do grep -H per $i|tail -n2; grep -H per $i|sed 's/\[//'|sort -g -k4|head -n1;  echo; done|sed 's/\[//g' |cut -b 1-140

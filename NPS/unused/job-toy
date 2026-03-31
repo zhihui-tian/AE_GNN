@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+
+
+# #jsrun -r 1 
+# python main.py --dim 3 \
+#     --dir_data ~/data/AB_dt1/ \
+#     --clip_length 1001 --frame_shape 64 --n_colors 1 \
+#     --pointgroup 1 \
+#     --model stochastic_phase_field \
+#     --model_setting '{"G1":0,"G2":1}' \
+#     --n_resgroups 10 --n_resblocks 20 --n_feats 64 --resume -1 \
+#     --save blah --loss "1*L1" \
+#     --save_results --print_model --n_GPUs 4 \
+#     --minibatch_size 4 --n_threads 1
+
+# #--resume -1
+
+# #--pre_train ../experiment/model/RCAN_BIX2.pt \
+
+python NPS/train_stochastic.py \
+  --model stochastic_evolution --dim=3 --jobid 3D \
+  --model_setting '{"G0":1,"G1":0,"G2":0}' \
+  --frame_shape=16 --n_feats 216 \
+  --f1 0.1 --loss "L2" --periodic \
+  --datatype toy_data --print_every=10 --test_every=50 \
+  --epochs 120 --minibatch_size=64 --lr=1e-2

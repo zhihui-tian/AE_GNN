@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# #BSUB -G cmi amsdnn msgnn
+#BSUB -G msgnn
+#BSUB -q pdebug
+# pdebug (2 hours) or pbatch (12 hours)
+#BSUB -nnodes 1
+#BSUB -W 2:00
+
+# VISIBLE_CUDA_DEVICES=3
+jsrun -r 1 python -m NPS.main \
+  --dir_data=$HOME/data/LJ20new --dim=3 --channel_first --frame_shape=20 --periodic \
+  --data_slice="...,::2" --data_preprocess='{"name":"fft","tkeep": 0.1,"skeep":0.25}' --n_colors=2 --n_colors_out=1 \
+  --jobid=test_LJ20.che_fft \
+  --model_deter=feedforward --ff_model=cahn_hilliard --num_hidden=32,32 --n_GPUs=4 --kernel_size=1 --act=swish \
+  --model_stoch cnn_fluctuation --stoch_hidden=20,20 --stoch_numNN=3 --stoch_onsite=0 --no_putback_conv --add_c0 \
+  --model_setting="{}" \
+  --loss="1*MSE" --print_every=80 --epochs=8000 --lr=1e-3 --lr_decay=20 --gamma=0.9 \
+  --scheduler=step --pointgroup=Oh \
+  --minibatch_size=40 --input_length=1 --total_length=2 --pred_length_test=-1  --resume=-1 --load=y
+
+  #--minibatch_size=25   --input_length=3 --total_length=100 --pred_length_test=97 --tskip_test=1 --clip_step 9999 --test_only --resume -2 --save_results
+#for i in ../experiment/LJ20.[pc]*/log*; do grep -H per $i|tail -n2; grep -H per $i|sed 's/\[//'|sort -g -k4|head -n1;  echo; done|sed 's/\[//g' |cut -b 1-140

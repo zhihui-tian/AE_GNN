@@ -1,0 +1,7 @@
+TO run the model:
+
+python model_mnist.py
+
+Prerequisites:
+
+Pytorch 1.0

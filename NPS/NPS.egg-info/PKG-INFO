@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: NPS
+Version: 0.1.0
+Summary: Neural phase simulation
+Home-page: https://github.com/feifzhou/NPS
+Author: Fei Zhou
+Author-email: fei.fzhou@gmail.com
+Keywords: materials science
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: TBD
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6, <4
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+License-File: LICENSE
+
+# NPS
+Neural Phase Simulation
+
+Implements neural networks for prediction of microstructure evolution in 2D and 3D
+
+Networks:
+  * Convolutional LSTM (PredRNN, PredRNN++, E3dLSTM)
+  * Convolutional n-gram models
+    * 1-gram ResNet
+  * VAE with RNN on latent bottleneck (TBD)
+  * Attention based, transformer like (TBD)
+  
+Loss functions:
+  * L1, L2 loss of pixels/voxels
+  * GAN loss (TBD)
+  * Perceptual loss (TBD)
+  
+Special ops
+  * Point group symmetry through data augmentation
+  * Periodic convolution
+  * Attention (TBD)

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+set -x
+
+# #jsrun -r 1 
+# python main.py --dim 3 \
+
+# python NPS/train_stochastic.py \
+jsrun -r 1 python -u main.py \
+  --model base_evolution --dim=3 --periodic --jobid AB20rnn \
+  --model_deter feedforward --model_stoch simple_diffusion \
+  --frame_shape=20 --num_hidden 64,64,64 --n_GPUs=4 \
+  --loss "1*MSE + 0.00001*noise_MSE" \
+  --dir_data $HOME/data/AB20  --channel_first \
+  --print_every=20  --save_results \
+  --epochs 8000 --minibatch_size=150 --total_length 2 --input_length=1 --lr=6e-4 --lr_decay=18 --gamma=0.8

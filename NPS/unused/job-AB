@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pbatch
+#BSUB -nnodes 1
+#BSUB -W 12:00
+
+
+# #jsrun -r 1 
+# python main.py --dim 3 \
+
+python NPS/train_stochastic.py \
+  --model stochastic_CHE --dim=3 --jobid AB20 \
+  --model_setting '{"G0":1,"G1":0,"G2":0}' \
+  --frame_shape=20 --n_feats 64 \
+  --f1 0.1 --loss "L2" --periodic \
+  --datatype longclip --dir_data $HOME/data/AB20 \
+  --print_every=10 --test_every=10 \
+  --epochs 8000 --minibatch_size=400 --total_length 2 --lr=3e-2

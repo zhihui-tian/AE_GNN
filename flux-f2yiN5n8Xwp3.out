@@ -1,0 +1,13 @@
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1 0
+NPS_autoencoder original
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout1_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1/log_org_32
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout3_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1 1
+NPS_autoencoder original
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout3_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1/log_org_32
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout5_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1 2
+NPS_autoencoder original
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout5_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1/log_org_32
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout7_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1 3
+NPS_autoencoder original
+experiment/steps_tune/grain_NPS_autoencoder-batch4_lr1e-4_nin1_nout7_noise1e-3_lossL2_nmp3_nhid96_nae1_nencdec1/log_org_32
+Mar 30 17:30:29.016797 PDT 2026 broker.err[0]: rc2.0: /var/tmp/tian9/jobtmp-0-f2yiN5n8Xwp3/script Alarm clock (rc=142) 1791.5s

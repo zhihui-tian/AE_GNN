@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#BSUB -G ustruct
+#BSUB -q pdebug
+#BSUB -nnodes 1
+#BSUB -W 2:00
+
+#set -x
+
+jsrun -r 1 python -u main.py \
+  --dir_data $HOME/data/waves-1mode --channel_first --frame_shape=64 \
+  --dim=2 \
+  --jobid wave.predrnn32x2_new_outfrom1 --pointgroup 4m \
+  --model_deter predrnn \
+  --num_hidden 32,32 --n_GPUs=4 \
+  --loss "1*MSE" --print_every=20 --epochs 8000 --lr=1e-3 --lr_decay=20 --gamma=0.82 \
+  --minibatch_size=20 --input_length=5 --total_length=10 --pred_length_test=-1  --resume -1 --load y
+
+  #--minibatch_size=25   --input_length=3 --total_length=100 --pred_length_test=97 --tskip_test=1 --clip_step 9999 --test_only --resume -2 --save_results
+  
+# resume training: --resume -1 --load y
